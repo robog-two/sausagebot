@@ -46,7 +46,7 @@ connectSocket((message: IncomingMessage, sendReply: (reply: string, recipient?: 
             if ((bet.rating < 3) === (rating < 3)) {
               winners++
             } else {
-              pot += 1 //bet.wager
+              pot += 100 //bet.wager
             }
           }
           const eachWin = Math.floor(pot/winners)
