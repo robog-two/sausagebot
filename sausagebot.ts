@@ -14,7 +14,7 @@ let betters: string[] = []
 
 connectSocket((message: IncomingMessage, sendReply: (reply: string, recipient?: string) => void) => {
   if (message.data === '!sausage') {
-    sendReply(`🌭 Uptime ${Date.now()-start}`)
+    sendReply(`🌭 Uptime ${Date.now()-start}ms. Mods: Type !startbet to start, and !results <rating from 1 to 5> to end.`)
   }
 
   if (message.nick === 'pickleandcroissant' || message.features.includes('moderator') || message.features.includes('admin')) {
@@ -70,7 +70,7 @@ connectSocket((message: IncomingMessage, sendReply: (reply: string, recipient?: 
     }
   }
 
-  if (message.data.startsWith('!bet')) {
+  if (message.data.startsWith('!bet') && stage === 'started') {
     try {
       const split = message.data.split(' ')
       const rating = parseInt(split[1])
