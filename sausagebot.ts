@@ -7,14 +7,13 @@ interface Bet {
   wager: number
 }
 
-const start = Date.now()
 let stage = 'notstarted'
 let bets: Bet[] = []
 let betters: string[] = []
 
 connectSocket((message: IncomingMessage, sendReply: (reply: string, recipient?: string) => void) => {
-  if (message.data === '!sausage') {
-    sendReply(`🌭 Uptime ${Date.now()-start}ms. Mods: Type !startbet to start, and !results <rating from 1 to 5> to end.`)
+  if (message.data.startsWith('!sausage')) {
+    sendReply(`🌭 Sausage betting by pickleandcroissant! Feel free to mute bot if misbehaving. >Mods: Type "!startbet" to start, and "!results <rating from 1 to 5>" to end.`)
   }
 
   if (message.nick === 'pickleandcroissant' || message.features.includes('moderator') || message.features.includes('admin')) {
