@@ -7,13 +7,14 @@ interface Bet {
   wager: number
 }
 
+const start = Date.now()
 let stage = 'notstarted'
 let bets: Bet[] = []
 let betters: string[] = []
 
 connectSocket((message: IncomingMessage, sendReply: (reply: string, recipient?: string) => void) => {
   if (message.data === '!sausage') {
-    sendReply('🌭')
+    sendReply(`🌭 Uptime ${Date.now()-start}`)
   }
 
   if (message.nick === 'pickleandcroissant' || message.features.includes('moderator') || message.features.includes('admin')) {
